@@ -1,22 +1,27 @@
-# mp-bit-trees-maven
+## Mini-Project #10: Bit Trees & Braille
 
-A mini-project exploring bit trees (a form of binary tree) and their use in translating between alphabets, particularly in translating to and from braille.
+A mini-project exploring bit trees (a form of binary tree) and their use in translating between
+alphabets, particularly in translating to and from braille.
 
-**Authors**
+### Authors
 
-* Your name here
-* Samuel A. Rebelsky (starter code)
-
-**Acknowledgements**
-
-*
-*
-*
-
-**Instructions for use**
-
-_Please insert instructions here._
+- *Sara Jaljaa*
+- *Samuel A. Rebelsky (starter code)*
 
 ---
 
-This code may be found at <https://github.com/USERNAME/mp-bit-trees-maven>. The original code may be found at <https://github.com/Grinnell-CSC207/mp-bit-trees-maven>.
+### Acknowledgements
+
+---
+
+### Instructions
+
+*Please insert instructions here.*
+
+---
+
+### Source
+
+This code may be found at: [500dpi/mp-bit-trees-maven](https://github.com/500dpi/mp-bit-trees-maven)
+
+The original code may be found at: [Grinnell-CSC207/mp-bit-trees-maven](https://github.com/Grinnell-CSC207/mp-bit-trees-maven)
