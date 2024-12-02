@@ -12,6 +12,11 @@ alphabets, particularly in translating to and from braille.
 
 ### Acknowledgements
 
+[@Vinay on StackOverflow (02/12/13)](https://stackoverflow.com/questions/14825374/reading-a-textfile-using-inputstream):
+*Example of reading files with BufferedReader using an InputStream object.*
+
+[BufferedReader](https://docs.oracle.com/javase/10/docs/api/java/io/BufferedReader.html): *For reference during implementation.*
+
 ---
 
 ### Instructions
