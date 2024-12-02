@@ -107,6 +107,29 @@ public class BitTree {
     br.close();
   } // read(InputStream)
 
+  /**
+   * Print all the values currently in the tree (depth-first).
+   *
+   * @param pen
+   *    The pen to print with.
+   * @param bit
+   *    The current string of bits.
+   * @param node
+   *    The current node in the tree.
+   */
+  public void printAll(PrintWriter pen, String bit, BitTreeInteriorNode node) {
+    if (node == null) {
+      return;
+    } else {
+      node = traverse(bit);
+      if (node.get() != null) {
+        pen.println(bit + ": " + node.get().get());
+      } // if
+      printAll(pen, bit + "0", node.left());
+      printAll(pen, bit + "1", node.right());
+    } // elif
+  } // printAll(PrintWriter, String, BitTreeInteriorNode)
+
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
@@ -130,11 +153,8 @@ public class BitTree {
    *    The value to set the tree's bit pattern to.
    * @return
    *    The set string value.
-   *
-   * @throws IndexOutOfBoundsException
-   *    When the bits are greater than the tree's levels.
    */
-  public String set(String bits, String value) throws IndexOutOfBoundsException {
+  public String set(String bits, String value) {
     if (bits.length() != this.levels) {
       throw new IndexOutOfBoundsException(
           "Bit length " + bits.length() + " is greater than tree levels: " + this.levels);
@@ -172,7 +192,8 @@ public class BitTree {
    *    The pen to print with.
    */
   public void dump(PrintWriter pen) {
-    // STUB
+    this.printAll(pen, "0", this.root);
+    this.printAll(pen, "1", this.root);
   } // dump(PrintWriter)
 
   /**
