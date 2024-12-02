@@ -86,7 +86,7 @@ public class BitTree {
    *    The file path.
    *
    * @throws IOException
-   *    When the file does not exist.
+   *    When the stream is null or while closing resources.
    */
   private void read(InputStream stream) throws IOException {
     /* Cannot read from an empty stream. */
@@ -98,8 +98,8 @@ public class BitTree {
     String[] conversion = new String[2];
     BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 
-    /* Until EOF, read a line & split at the comma; use the resulting
-    values to set the tree. */
+    /* Until EOF, read a line & split at the comma, then set the tree
+    with [0] = bit pattern and [1] = leaf value. */
     while ((str = br.readLine()) != null) {
       conversion = str.split(",");
       this.set(conversion[0], conversion[1]);
@@ -109,16 +109,16 @@ public class BitTree {
 
   /**
    * Print all the values currently in the tree (depth-first) starting
-   * with "0" or "1".
+   * with the initial bit's character ('0' or '1' in this case).
    *
    * @param pen
    *    The pen to print with.
    * @param bit
-   *    The current string of bits (starts with 0 or 1).
+   *    The current string of bits.
    * @param node
    *    The current node in the tree.
    */
-  public void printAll(PrintWriter pen, String bit, BitTreeInteriorNode node) {
+  public void values(PrintWriter pen, String bit, BitTreeInteriorNode node) {
     if (node == null) {
       return;
     } else {
@@ -126,8 +126,8 @@ public class BitTree {
       if (node.get() != null) {
         pen.println(bit + "," + node.get().get());
       } // if
-      printAll(pen, bit + "0", node.left());
-      printAll(pen, bit + "1", node.right());
+      values(pen, bit + "0", node.left());
+      values(pen, bit + "1", node.right());
     } // elif
   } // printAll(PrintWriter, String, BitTreeInteriorNode)
 
@@ -160,9 +160,6 @@ public class BitTree {
       throw new IndexOutOfBoundsException(
           "Bit length " + bits.length() + " is greater than tree levels: " + this.levels);
     } // if
-    if (value.length() != 1) {
-      throw new IllegalArgumentException("String [" + value + "] must have length = 1.");
-    } // if
     BitTreeLeaf leaf = new BitTreeLeaf(value);
     BitTreeInteriorNode node = traverse(bits);
     node.addLeaf(leaf);
@@ -193,8 +190,8 @@ public class BitTree {
    *    The pen to print with.
    */
   public void dump(PrintWriter pen) {
-    this.printAll(pen, "0", this.root);
-    this.printAll(pen, "1", this.root);
+    this.values(pen, "0", this.root);
+    this.values(pen, "1", this.root);
   } // dump(PrintWriter)
 
   /**
