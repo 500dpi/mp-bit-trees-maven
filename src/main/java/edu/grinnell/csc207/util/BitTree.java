@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+
 import edu.grinnell.csc207.util.nodes.BitTreeInteriorNode;
 import edu.grinnell.csc207.util.nodes.BitTreeLeaf;
 
@@ -130,23 +130,6 @@ public class BitTree {
       printAll(pen, bit + "1", node.right());
     } // elif
   } // printAll(PrintWriter, String, BitTreeInteriorNode)
-  public static void main(String[] args) {
-    BitTree tree = new BitTree(6);
-    // tree.set("100000", "A");   /* A */
-    // tree.set("110000", "B");   /* B */
-    // tree.set("100100", "C");   /* C */
-    // tree.set("100110", "D");   /* D */
-    // tree.set("100010", "E");   /* E */
-    try {
-    tree.load(new FileInputStream("src/main/java/edu/grinnell/csc207/util/convert/b2a.txt"));
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-
-    PrintWriter pen = new PrintWriter(System.out, true);
-    tree.dump(pen);
-    // tree.str(pen, bit1, tree.root);
-  }
 
   // +---------+-----------------------------------------------------
   // | Methods |

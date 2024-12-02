@@ -121,7 +121,8 @@ public class TestSara {
 
   /**
    * Jankily try loading b2a.txt & check that it loaded correctly
-   * (to avoid manually checking).
+   * (to avoid manually checking) until Sam comes up with a better
+   * way to test load().
    */
   @Test
   public void loadTest() {
@@ -142,7 +143,8 @@ public class TestSara {
       br.close();
     } catch (Exception e) {
       /* Should throw an IOException when br is closed (can double
-      check with e.printStackTrace()) */
+      check with e.printStackTrace()). If it is throwing an IOException
+      for some unknown other reason, it doesn't matter. */
       assertEquals(IOException.class, e.getClass());
     } // try/catch
   } // loadTest()
